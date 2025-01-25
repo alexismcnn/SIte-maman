@@ -391,15 +391,15 @@ document.addEventListener('DOMContentLoaded', function () {
             menu.classList.toggle('active');
             document.body.classList.toggle('menu-open');
         });
-    }
 
-    // Fermer le menu au clic sur un lien
-    document.querySelectorAll('.menu a').forEach(link => {
-        link.addEventListener('click', () => {
-            menu.classList.remove('active');
-            document.body.classList.remove('menu-open');
+        // Fermer le menu au clic sur un lien
+        document.querySelectorAll('.menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.remove('active');
+                document.body.classList.remove('menu-open');
+            });
         });
-    });
+    }
 });
 
 // Fonction de récupération sécurisée des éléments
@@ -503,3 +503,41 @@ document.addEventListener('DOMContentLoaded', function () {
         observer.disconnect();
     };
 });
+
+// Menu mobile
+const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+const menu = document.querySelector('.menu');
+
+if (mobileMenuToggle && menu) {
+    mobileMenuToggle.addEventListener('click', () => {
+        mobileMenuToggle.classList.toggle('active');
+        menu.classList.toggle('active');
+        document.body.classList.toggle('menu-open');
+    });
+
+    // Fermer le menu au clic sur un lien
+    document.querySelectorAll('.menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenuToggle.classList.remove('active');
+            menu.classList.remove('active');
+            document.body.classList.remove('menu-open');
+        });
+    });
+}
+
+// Gestion du scroll sur mobile
+document.addEventListener('scroll', debounce(() => {
+    if (menu.classList.contains('active')) {
+        mobileMenuToggle.classList.remove('active');
+        menu.classList.remove('active');
+        document.body.classList.remove('menu-open');
+    }
+}, 100));
+
+// Désactiver le défilement quand le menu est ouvert
+document.body.addEventListener('touchmove', (e) => {
+    if (document.body.classList.contains('menu-open')) {
+        e.preventDefault();
+    }
+}, { passive: false });
+
