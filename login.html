@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion - Hypersens</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <a href="index.html">
+                <img src="images/logo.svg" alt="Hypersens Logo">
+            </a>
+        </div>
+        <a href="index.html" class="back-btn" style="position: absolute; right: 2rem; color: var(--primary); text-decoration: none;">
+            <i class="fas fa-home"></i> Retour à l'accueil
+        </a>
+    </nav>
+
+    <div class="login-container" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 2rem;">
+        <div class="login-card" style="background: var(--bg); border-radius: 20px; padding: 3rem; box-shadow: var(--card-shadow); max-width: 400px; width: 100%;">
+            <h1 style="font-size: 2rem; margin-bottom: 2rem; color: var(--primary); text-align: center;">Connexion</h1>
+            
+            <form id="login-form" style="display: flex; flex-direction: column; gap: 1.5rem;">
+                <div class="form-group" style="position: relative;">
+                    <input type="email" id="email" placeholder="Email" required 
+                           style="width: 100%; padding: 1rem 1.5rem; border: 2px solid var(--light); border-radius: 12px; font-size: 1rem; transition: all 0.3s ease;">
+                </div>
+                
+                <div class="form-group" style="position: relative;">
+                    <input type="password" id="password" placeholder="Mot de passe" required 
+                           style="width: 100%; padding: 1rem 1.5rem; border: 2px solid var(--light); border-radius: 12px; font-size: 1rem; transition: all 0.3s ease;">
+                </div>
+
+                <div style="text-align: right;">
+                    <a href="#" style="color: var(--primary); text-decoration: none; font-size: 0.9rem;">Mot de passe oublié ?</a>
+                </div>
+
+                <button type="submit" class="cta-btn" style="width: 100%; margin-top: 1rem;">
+                    Se connecter
+                </button>
+            </form>
+
+            <div style="margin-top: 2rem; text-align: center;">
+                <p style="color: var(--text); margin-bottom: 1rem;">Ou continuez avec</p>
+                <div style="display: flex; justify-content: center;">
+                    <button class="social-btn google-btn" style="background: white; color: #444; padding: 0.8rem 2rem; border-radius: 8px; border: 1px solid #ddd; display: flex; align-items: center; gap: 1rem;">
+                        <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google logo" style="width: 18px; height: 18px;">
+                        <span style="font-family: 'Roboto', sans-serif;">Google</span>
+                    </button>
+                </div>
+            </div>
+
+            <p style="text-align: center; margin-top: 2rem; color: var(--text);">
+                Pas encore de compte ? 
+                <a href="register.html" style="color: var(--primary); text-decoration: none; font-weight: 500;">S'inscrire</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Ajoutez ici la logique de connexion
+            console.log('Tentative de connexion');
+        });
+
+        // Ajout des effets de survol sur les boutons sociaux
+        document.querySelectorAll('.social-btn').forEach(btn => {
+            btn.addEventListener('mouseenter', () => {
+                btn.style.transform = 'translateY(-2px)';
+                btn.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
+            });
+
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = 'translateY(0)';
+                btn.style.boxShadow = 'none';
+            });
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

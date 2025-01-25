@@ -1,0 +1,1736 @@
+/*------------------------------------*\
+  #VARIABLES
+\*------------------------------------*/
+:root {
+    /* Couleurs principales */
+    --primary: #2563eb;
+    /* Bleu principal utilisé pour les éléments importants */
+    --secondary: #3b82f6;
+    /* Bleu secondaire pour les éléments de support */
+    --accent: #60a5fa;
+    /* Bleu clair pour les accents et surbrillances */
+
+    /* Couleurs de fond et text */
+    --light: #f0f9ff;
+    /* Fond clair avec teinte bleue subtile */
+    --dark: #1e40af;
+    /* Bleu foncé pour contraste fort */
+    --text: #1e293b;
+    /* Couleur de texte principale */
+    --bg: #ffffff;
+    /* Fond blanc par défaut */
+
+    /* Effets et décorations */
+    --gradient: linear-gradient(135deg, #2563eb 0%, #60a5fa 100%);
+    --card-shadow: 0 10px 20px rgba(37, 99, 235, 0.1);
+
+    /* Couleurs d'accent orange */
+    --orange: rgb(230, 124, 48);
+    --orange-light: rgba(230, 124, 48, 0.1);
+    --orange-gradient: linear-gradient(135deg, var(--primary) 0%, var(--orange) 100%);
+}
+
+/* Modification du thème sombre */
+[data-theme="dark"] {
+    --primary: #60a5fa;
+    --secondary: #93c5fd;
+    --accent: #bfdbfe;
+    --light: #1e293b;
+    --dark: #f8fafc;
+    --text: #f8fafc;
+    --bg: #0f172a;
+    --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: var(--text);
+    background-color: var(--bg);
+    transition: all 0.3s ease;
+    cursor: none;
+}
+
+/* Navigation moderne avec glassmorphism */
+nav {
+    position: fixed;
+    width: 100%;
+    padding: 1rem 2rem;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+nav .logo {
+    max-width: 200px;
+    height: auto;
+    display: flex;
+    align-items: center;
+}
+
+nav .logo img {
+    height: 40px;
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+nav .logo img:hover {
+    transform: scale(1.05);
+}
+
+.menu a {
+    margin: 0 1.5rem;
+    text-decoration: none;
+    color: var(--primary);
+    font-weight: 500;
+    position: relative;
+    padding: 0.5rem 0;
+    overflow: visible;
+}
+
+.menu a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.3s ease;
+}
+
+.menu a:hover::after {
+    width: 100%;
+    background: var(--orange);
+}
+
+.menu a::before {
+    display: none;
+}
+
+/* Theme Switch repositionné */
+.theme-switch {
+    position: relative;
+    margin-left: 2rem;
+    background: transparent;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.theme-switch:hover {
+    background: var(--primary);
+    color: white;
+}
+
+/* Ajout du style pour le bouton de connexion */
+.login-btn {
+    background: var(--primary);
+    color: white !important;
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    margin-left: 1rem;
+    transition: all 0.3s ease;
+}
+
+.login-btn:hover {
+    background: var(--orange);
+    transform: translateY(-2px);
+}
+
+.login-btn::after {
+    display: none;
+}
+
+/* Hero section avec design moderne */
+.hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--orange) 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    padding: 8rem 2rem 12rem;
+    background-attachment: fixed;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 120px 2rem;
+    overflow: hidden;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    -webkit-font-smoothing: subpixel-antialiased;
+}
+
+/* Styles de secours pour éviter les problèmes d'affichage */
+.hero {
+    min-height: 100vh !important;
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+.hero * {
+    position: relative !important;
+    z-index: 2 !important;
+}
+
+.hero h1 {
+    font-size: 4.5rem;
+    font-weight: 800;
+    background: linear-gradient(to right, #fff, rgba(255, 255, 255, 0.8));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+    color: white;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.cta-btn {
+    background: var(--gradient);
+    border: none;
+    padding: 1.2rem 3rem;
+    border-radius: 50px;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cta-btn:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 15px 30px rgba(43, 108, 176, 0.2);
+    background: var(--orange-gradient);
+}
+
+/* Services Cards avec design innovant */
+.services-grid {
+    margin-top: -6rem;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    position: relative;
+}
+
+/* Fix pour les problèmes de layout */
+.team-section,
+.services-grid,
+.testimonials,
+.pricing-grid {
+    width: 100% !important;
+    overflow: hidden !important;
+    position: relative !important;
+}
+
+.service-card {
+    background: var(--bg);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    will-change: transform;
+}
+
+.service-card:hover {
+    transform: translateY(-15px) scale(1.02);
+    border-bottom: 3px solid var(--orange);
+}
+
+.service-card img {
+    height: 200px;
+    object-fit: cover;
+    width: 100%;
+    filter: saturate(1.1) contrast(1.1);
+}
+
+.service-card h3 {
+    padding: 1.5rem;
+    color: var(--primary);
+    font-size: 1.5rem;
+}
+
+.service-card p {
+    padding: 0 1.5rem 1.5rem;
+    color: var(--secondary);
+}
+
+/* Sections avec design épuré */
+section {
+    padding: 6rem 2rem;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    text-align: center;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Contact Form - New Design */
+#contact {
+    background: white;
+    padding: 8rem 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+#contact::before {
+    display: none;
+    /* Supprime l'élément décoratif précédent */
+}
+
+#contact h2 {
+    margin-bottom: 4rem;
+    position: relative;
+    color: var(--primary);
+}
+
+#contact h2::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: var(--gradient);
+    border-radius: 2px;
+}
+
+#contact-form {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    background: var(--light);
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: var(--card-shadow);
+}
+
+#contact-form input,
+#contact-form textarea {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    border: 2px solid var(--light);
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: var(--bg);
+}
+
+#contact-form input:focus,
+#contact-form textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(49, 130, 206, 0.1);
+    outline: none;
+}
+
+#contact-form textarea {
+    grid-column: 1 / -1;
+    min-height: 150px;
+}
+
+#contact-form button[type="submit"] {
+    grid-column: 1 / -1;
+    background: var(--orange-gradient);
+    color: white;
+    padding: 1.2rem;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+#contact-form button[type="submit"]::after {
+    content: '→';
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+#contact-form button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(49, 130, 206, 0.2);
+}
+
+#contact-form button[type="submit"]:hover::after {
+    transform: translateX(5px);
+}
+
+@media (max-width: 768px) {
+    #contact-form {
+        grid-template-columns: 1fr;
+        padding: 2rem;
+    }
+
+    #contact {
+        padding: 6rem 1rem;
+    }
+}
+
+/* Footer moderne */
+footer {
+    background: var(--dark);
+    padding: 4rem 2rem;
+    margin-top: 4rem;
+    clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(to right, var(--accent), var(--secondary));
+}
+
+footer p {
+    position: relative;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+[data-theme="dark"] footer {
+    background: var(--accent);
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Footer mise à jour */
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.footer-section h4 {
+    color: white;
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+}
+
+.footer-section h4::after {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 2px;
+    background: var(--orange);
+    margin-top: 0.5rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-links a {
+    color: white;
+    font-size: 1.5rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+social-links a:hover {
+    transform: translateY(-3px);
+}
+
+.social-links .fa-linkedin:hover {
+    color: #0077b5;
+}
+
+.social-links .fa-twitter:hover {
+    color: #1DA1F2;
+}
+
+.social-links .fa-instagram:hover {
+    color: #E4405F;
+}
+
+.social-links .fa-facebook:hover {
+    color: #1877F2;
+}
+
+.footer-section p {
+    color: var(--light);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.footer-bottom {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .menu {
+        display: none;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+        padding: 0 1rem;
+    }
+
+    .services-grid {
+        padding: 2rem 1rem;
+    }
+
+    nav .logo img {
+        height: 30px;
+    }
+
+    .hero {
+        padding: 80px 1rem;
+    }
+
+    .service-card {
+        min-height: 350px;
+    }
+
+    .login-btn {
+        margin: 1rem 0;
+        text-align: center;
+        display: block;
+    }
+}
+
+/* Nouvelles sections */
+.testimonials {
+    padding: 5rem 2rem;
+    background: var(--light);
+}
+
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.testimonial-card {
+    background: var(--bg);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    border-left: 3px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.testimonial-card:hover {
+    border-left: 3px solid var(--orange);
+}
+
+.testimonial-card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+}
+
+.pricing {
+    padding: 5rem 2rem;
+    background: var (--bg);
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 3rem;
+    max-width: 1400px; /* Augmenté pour mieux accommoder les nouvelles cartes */
+    margin: 0 auto;
+    position: relative;
+    padding: 4rem 2rem;
+}
+
+/* Ajustement pour l'affichage sur les grands écrans */
+@media (min-width: 1200px) {
+    .pricing-grid {
+        grid-template-columns: repeat(3, 1fr);
+        /* Force 3 colonnes sur les grands écrans */
+    }
+}
+
+/* Ajustement pour les écrans moyens */
+@media (min-width: 768px) and (max-width: 1199px) {
+    .pricing-grid {
+        grid-template-columns: repeat(2, 1fr);
+        /* Force 2 colonnes sur les écrans moyens */
+        gap: 2rem;
+    }
+}
+
+/* Ajustement pour le mobile */
+@media (max-width: 767px) {
+    .pricing-grid {
+        grid-template-columns: 1fr;
+        /* Une seule colonne sur mobile */
+        gap: 2rem;
+        padding: 2rem 1rem;
+    }
+    
+    .pricing-card.featured {
+        transform: scale(1.05);
+        /* Réduction de l'échelle sur mobile */
+        margin: 2rem 0;
+        /* Espacement vertical uniforme */
+    }
+}
+
+/* Ajustement de la hauteur des cartes */
+.pricing-card {
+    height: 100%;
+    /* Assure une hauteur uniforme */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2rem;
+}
+
+.pricing-card ul {
+    flex-grow: 1;
+    /* Permet à la liste de prendre l'espace disponible */
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 2rem 0;
+}
+
+/* Ajustement pour l'espacement des animations */
+.pricing-card[data-aos-delay="600"],
+.pricing-card[data-aos-delay="800"] {
+    animation-delay: 0.6s, 0.8s;
+}
+
+.pricing-card {
+    background: var(--light);
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    will-change: transform;
+}
+
+.pricing-card:hover {
+    transform: translateY(-10px);
+}
+
+/* Style pour le bouton de contact dans les cartes de prix */
+.contact-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    background: var(--orange-gradient);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.contact-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(49, 130, 206, 0.2);
+}
+
+.contact-btn i {
+    font-size: 1.2rem;
+}
+
+/* Suppression des styles de prix qui ne sont plus nécessaires */
+.price {
+    display: none;
+}
+
+.faq {
+    padding: 5rem 2rem;
+    background: var(--light);
+}
+
+.faq-item {
+    background: var(--bg);
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.faq-answer {
+    display: none;
+    padding-top: 1rem;
+    color: var(--text);
+}
+
+.faq-item.active {
+    border-left: 3px solid var(--orange);
+}
+
+.faq-item.active .faq-answer {
+    display: block;
+}
+
+/* Animations et transitions */
+.service-card,
+.testimonial-card,
+.pricing-card {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Modal styles */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1100;
+}
+
+.modal-content {
+    background: var(--bg);
+    padding: 2rem;
+    border-radius: 15px;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Notification */
+.notification {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: var(--primary);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.notification.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Styles améliorés pour les notifications */
+.notification {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    color: white;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 9999;
+}
+
+.notification.success {
+    background: var(--primary);
+}
+
+.notification.error {
+    background: #ef4444;
+}
+
+.notification.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Featured card */
+.pricing-card.featured {
+    transform: scale(1.1);
+    margin-top: -2rem;
+    /* Déplace la carte vers le haut */
+    margin-bottom: -2rem;
+    /* Compense le déplacement vers le haut */
+    border: 3px solid var(--primary);
+    position: relative;
+    z-index: 2;
+    /* Place la carte au-dessus des autres */
+    background: var(--light);
+    /* Changé de 'white' à 'var(--light)' pour matcher les autres cartes */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    /* Ombre plus prononcée */
+}
+
+.pricing-card.featured:hover {
+    transform: translateY(-10px) scale(1.1);
+    /* Maintient le scale même pendant le hover */
+}
+
+.badge {
+    position: absolute;
+    top: -15px;
+    /* Légèrement plus haut */
+    right: 20px;
+    background: var(--orange);
+    /* Utilise le dégradé principal */
+    color: white;
+    padding: 0.5rem 1.5rem;
+    /* Badge plus grand */
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    /* Ajoute une ombre au badge */
+}
+
+/* Ajustement des cartes non featured */
+.pricing-card:not(.featured) {
+    z-index: 1;
+    transform: scale(1);
+}
+
+/* Team Section */
+.team-section {
+    padding: 6rem 2rem;
+    background: var(--light);
+    position: relative;
+    overflow: hidden;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.team-card {
+    background: var(--bg);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    transition: all 0.3s ease;
+    will-change: transform;
+    border-bottom: 3px solid transparent;
+    /* Ajout d'une bordure transparente par défaut */
+}
+
+/* Suppression de la règle spécifique pour first-child */
+.team-card:first-child {
+    border-bottom: none;
+    /* Supprime la bordure orange fixe */
+}
+
+.team-card:hover {
+    transform: translateY(-15px);
+    border-bottom: 3px solid var(--orange);
+    /* Ajoute la bordure orange au survol */
+}
+
+.team-image-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+    overflow: hidden;
+}
+
+.team-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.team-card:hover .team-image {
+    transform: scale(1.1);
+}
+
+.team-info {
+    padding: 2rem;
+    text-align: center;
+}
+
+.team-name {
+    font-size: 1.5rem;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.team-role {
+    color: var(--secondary);
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.team-bio {
+    color: var(--text);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.linkedin-button {
+    background: #0077b5;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.linkedin-button:hover {
+    background: #005885;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 119, 181, 0.3);
+}
+
+.linkedin-button i {
+    font-size: 1.2rem;
+}
+
+/* Fallback pour les navigateurs sans support des dernières fonctionnalités */
+@supports not (backdrop-filter: blur(10px)) {
+    nav {
+        background: rgba(255, 255, 255, 0.95) !important;
+    }
+}
+
+/* Fix pour le mode sombre */
+[data-theme="dark"] {
+    background-color: #2d3748 !important;
+}
+
+/* Styles de secours pour éviter les problèmes d'affichage */
+img {
+    max-width: 100% !important;
+    height: auto !important;
+}
+
+/* Contact Section */
+.contact-section {
+    background: var(--light);
+    padding: 6rem 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+}
+
+.contact-info h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.contact-subtitle {
+    color: var(--secondary);
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+}
+
+.contact-details {
+    display: grid;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.contact-item i {
+    font-size: 1.5rem;
+    color: var(--primary);
+    padding: 1rem;
+    background: var(--bg);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.contact-item h3 {
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.availability {
+    color: var(--secondary);
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
+}
+
+.social-contact {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.social-btn.linkedin {
+    background: #0077b5;
+    color: white;
+}
+
+.social-btn.calendly {
+    background: var(--primary);
+    color: white;
+}
+
+.social-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.contact-form-wrapper {
+    background: var(--bg);
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    background: transparent;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-group label {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    color: var(--secondary);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1);
+}
+
+.form-group input:focus~label,
+.form-group textarea:focus~label,
+.form-group input:not(:placeholder-shown)~label,
+.form-group textarea:not(:placeholder-shown)~label {
+    transform: translateY(-2.5rem) scale(0.8);
+    color: var(--primary);
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 1rem;
+    background: var(--gradient);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(49, 130, 206, 0.2);
+}
+
+@media (max-width: 768px) {
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-info {
+        text-align: center;
+    }
+
+    .contact-item {
+        justify-content: center;
+    }
+
+    .social-contact {
+        justify-content: center;
+    }
+}
+
+/* Services Section Update */
+#services {
+    margin-top: -8rem;
+    /* Remonte toute la section */
+    padding-top: 0;
+    /* Enlève le padding du haut */
+    position: relative;
+    z-index: 10;
+}
+
+#services h2 {
+    margin-bottom: 4rem;
+    padding-top: 6rem;
+    /* Augmenté de 2rem à 6rem pour baisser le titre */
+    font-size: 2.8rem;
+    /* Titre légèrement plus grand */
+    position: relative;
+}
+
+.services-grid {
+    margin-top: 0;
+    /* Ajusté car la section est déjà remontée */
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+    /* Augmente légèrement l'espace entre les cartes */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.service-card {
+    background: var(--bg);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    height: 100%;
+    /* Assure une hauteur uniforme */
+    display: flex;
+    flex-direction: column;
+}
+
+.service-card img {
+    height: 250px;
+    width: 100%;
+    object-fit: cover;
+    transition: all 0.5s ease;
+}
+
+.service-card:hover img {
+    transform: scale(1.05);
+}
+
+.service-card h3 {
+    color: var(--primary);
+    font-size: 1.5rem;
+    margin-top: 1.5rem;
+    padding: 0 1.5rem;
+}
+
+.service-card p {
+    flex-grow: 1;
+    /* Permet au texte de prendre l'espace disponible */
+    padding: 1rem 1.5rem 2rem;
+    color: var(--secondary);
+    line-height: 1.6;
+}
+
+/* Media query pour le responsive */
+@media (max-width: 768px) {
+    #services {
+        margin-top: -4rem;
+        /* Moins remonté sur mobile */
+    }
+
+    #services h2 {
+        padding-top: 4rem;
+        /* Ajusté pour mobile également */
+        font-size: 2.2rem;
+    }
+}
+
+/* Amélioration de l'accessibilité */
+button,
+a {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    outline: none;
+    cursor: none;
+}
+
+button:focus,
+a:focus {
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3);
+}
+
+/* Correction de la navigation */
+.mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.mobile-menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 2px;
+    background: var(--primary);
+    margin: 5px 0;
+    transition: all 0.3s ease;
+}
+
+/* Media queries pour le responsive */
+@media (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: block;
+    }
+
+    .menu {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: var(--bg);
+        padding: 1rem;
+        transform: translateY(-100%);
+        transition: transform 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .menu.active {
+        transform: translateY(0);
+    }
+
+    .team-grid {
+        grid-template-columns: 1fr;
+        padding: 0 1rem;
+    }
+}
+
+/* Dark theme modifications for contact form */
+[data-theme="dark"] #contact-form input,
+[data-theme="dark"] #contact-form textarea {
+    color: white;
+}
+
+/*------------------------------------*\
+  #CURSEUR-PERSONNALISE
+\*------------------------------------*/
+/* Style du curseur personnalisé */
+.custom-cursor {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--orange);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: difference;
+    transition: transform 0.2s ease;
+}
+
+/* État actif du curseur au survol des éléments interactifs */
+.custom-cursor.active {
+    transform: scale(0.5);
+    background-color: var(--orange);
+}
+
+/* Force le curseur personnalisé sur tous les éléments interactifs */
+button,
+a,
+input,
+textarea,
+select,
+.service-card,
+.team-card,
+.faq-item,
+.pricing-card,
+.social-links a,
+.mobile-menu-toggle {
+    cursor: none !important;
+}
+
+/* Ajout du style pour le curseur personnalisé */
+.custom-cursor {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--orange);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none !important;
+    z-index: 99999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease, width 0.2s ease, height 0.2s ease, background-color 0.2s ease;
+    mix-blend-mode: difference;
+}
+
+/* Mission Statement */
+.mission-statement {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    color: white;
+}
+
+.mission-statement p {
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+    font-size: 1.1rem;
+}
+
+.mission-text {
+    font-size: 1.2rem !important;
+    font-weight: 500;
+    margin-bottom: 2rem !important;
+}
+
+.vision-text {
+    font-style: italic;
+    opacity: 0.95;
+}
+
+.approach-text {
+    font-weight: 500;
+    color: var(--orange);
+}
+
+@media (max-width: 768px) {
+    .mission-statement {
+        padding: 0 1.5rem;
+    }
+    
+    .mission-statement p {
+        font-size: 1rem;
+    }
+    
+    .mission-text {
+        font-size: 1.1rem !important;
+    }
+}
+
+/* Objectives Section */
+.objectives {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2rem;
+    text-align: center;
+}
+
+.objectives h2 {
+    color: white;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.objectives-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.objectives-content p {
+    color: white;
+    line-height: 1.8;
+    margin: 0;
+}
+
+.main-objective {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.vision {
+    font-style: italic;
+    opacity: 0.9;
+}
+
+.approach {
+    color: var(--orange);
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .objectives {
+        padding: 1rem;
+    }
+    
+    .objectives h2 {
+        font-size: 1.5rem;
+    }
+    
+    .main-objective {
+        font-size: 1.1rem;
+    }
+}
+
+/* Objectives Section - Updated */
+.objectives {
+    padding: 6rem 2rem;
+    background: var(--light);
+    text-align: center;
+    position: relative;
+    z-index: 10;
+    margin-top: -2rem; /* Réduit le chevauchement */
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 95%); /* Effet diagonal bas */
+}
+
+.objectives h2 {
+    color: var(--primary);
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.objectives-content {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.objectives-content p {
+    color: var(--text);
+    line-height: 1.8;
+    margin: 0;
+}
+
+.main-objective {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--primary) !important;
+}
+
+.vision {
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--secondary) !important;
+}
+
+.approach {
+    font-weight: 500;
+    color: var(--orange) !important;
+    font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+    .objectives {
+        padding: 4rem 1.5rem;
+        margin-top: -2rem;
+    }
+    
+    .objectives h2 {
+        font-size: 2rem;
+    }
+    
+    .main-objective {
+        font-size: 1.1rem;
+    }
+    
+    .vision, .approach {
+        font-size: 1rem;
+    }
+}
+
+/* Styles pour les pages login et register */
+.form-group {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    border: 2px solid var(--light);
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: var(--bg);
+    color: var(--text);
+}
+
+.form-group input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(49, 130, 206, 0.1);
+    outline: none;
+}
+
+/* Style pour le bouton retour */
+.back-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    transform: translateY(-2px);
+    color: var(--orange) !important;
+}
+
+.back-btn i {
+    font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+    .back-btn {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+    }
+}
+
+/* Style pour le bouton Google */
+.google-btn {
+    transition: background-color 0.3s, box-shadow 0.3s !important;
+}
+
+.google-btn:hover {
+    box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 2px 4px rgba(0, 0, 0, .25) !important;
+    background-color: #f8f9fa !important;
+}
+
+.google-btn:active {
+    background-color: #eeeeee !important;
+}
+
+.google-btn:focus {
+    outline: none;
+    box-shadow: 0 -1px 0 rgba(0, 0, 0, .04), 0 2px 4px rgba(0, 0, 0, .25), 0 0 0 3px #c8dafc !important;
+}
+
+/* Values Section */
+.values {
+    padding: 6rem 2rem 8rem; /* Augmentation du padding bottom */
+    background: var(--bg);
+    text-align: center;
+    position: relative;
+    z-index: 10;
+    margin-top: -6rem;
+    margin-bottom: 2rem; /* Ajout d'une marge en bas */
+}
+
+.values-content {
+    max-width: 800px;
+    margin: 0 auto 4rem; /* Augmentation de la marge bottom */
+    position: relative;
+    z-index: 2;
+}
+
+.values-text {
+    font-size: 1.4rem;
+    line-height: 1.8;
+    color: var(--primary);
+    font-weight: 500;
+    position: relative;
+    padding: 2rem 3rem; /* Augmentation du padding */
+    margin-bottom: 2rem; /* Ajout d'une marge en bas */
+}
+
+.values-text::before,
+.values-text::after {
+    content: '"';
+    font-size: 3rem;
+    color: var(--orange);
+    position: absolute;
+    opacity: 0.3;
+}
+
+.values-text::before {
+    left: -1rem;
+    top: -1rem;
+}
+
+.values-text::after {
+    right: -1rem;
+    bottom: -2rem;
+}
+
+@media (max-width: 768px) {
+    .values {
+        padding: 4rem 1.5rem 2rem;
+        margin-top: -4rem;
+    }
+    
+    .values h2 {
+        font-size: 2rem;
+    }
+    
+    .values-text {
+        font-size: 1.2rem;
+        padding: 0 1rem;
+    }
+}
+
+/* Ajout des styles spécifiques pour la page engagements */
+.engagement-content {
+    background: var(--light);
+    color: var(--text);
+}
+
+.definition-section,
+.benefit-card {
+    background: var(--bg);
+    color: var(--text);
+}
+
+.benefit-card p {
+    color: var(--text);
+}
+
+/* Ajustements pour le thème sombre */
+[data-theme="dark"] .definition-section,
+[data-theme="dark"] .benefit-card {
+    background: var(--light);
+}
+
+[data-theme="dark"] .engagement-content {
+    background: var(--bg);
+}
+
+[data-theme="dark"] .benefit-card p:not([style*="color"]) {
+    color: var(--text);
+}
+
+/* Styles pour la page Pour Qui */
+.target-section {
+    position: relative;
+    z-index: 1;
+}
+
+.target-content {
+    position: relative;
+    z-index: 2;
+}
+
+.main-message {
+    transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .main-message {
+    background: var(--light);
+}
+
+[data-theme="dark"] .target-content {
+    background: var(--bg);
+}
+
+/* Style pour le lien actif dans la navigation */
+.menu a.active {
+    color: var(--orange);
+}
+
+/* Styles pour la page Pour Quoi */
+.why-section {
+    position: relative;
+    z-index: 1;
+}
+
+.why-content {
+    position: relative;
+    z-index: 2;
+}
+
+[data-theme="dark"] .why-content {
+    background: var(--bg);
+}
+
+[data-theme="dark"] .main-message {
+    background: var(--light);
+}

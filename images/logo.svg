@@ -1,0 +1,24 @@
+<svg width="200" height="50" viewBox="0 0 200 50" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .text { font: bold 24px 'Inter', sans-serif; fill: #2b6cb0; }
+    .brain { fill: #4299e1; }
+    .connection { fill: #63b3ed; }
+    .accent { fill:rgb(230, 124, 48); }
+    .dot { fill: #ff8533; }
+  </style>
+  
+  <!-- Brain icon avec accent orange -->
+  <path class="brain" d="M25 5C14 5 5 14 5 25s9 20 20 20 20-9 20-20S36 5 25 5zm0 36c-8.8 0-16-7.2-16-16S16.2 9 25 9s16 7.2 16 16-7.2 16-16 16z"/>
+  
+  <!-- Neural connections avec points orange -->
+  <path class="connection" d="M25 15c-5.5 0-10 4.5-10 10s4.5 10 10 10 10-4.5 10-10-4.5-10-10-10zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8z"/>
+  
+  <!-- Points d'accent orange -->
+  <circle class="dot" cx="15" cy="25" r="2"/>
+  <circle class="accent" cx="35" cy="25" r="2"/>
+  <circle class="dot" cx="25" cy="15" r="2"/>
+  <circle class="accent" cx="25" cy="35" r="2"/>
+  
+  <!-- Company name -->
+  <text x="60" y="32" class="text">Hyper<tspan fill="#ff6b00">sens</tspan></text>
+</svg>

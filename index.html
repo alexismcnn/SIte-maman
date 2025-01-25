@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <!-- Meta tags pour SEO et performances -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Hypersens - Inclusion & Neurodiversité</title>
+
+    <!-- Préchargement des ressources critiques -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+    <!-- Feuilles de style -->
+    <link rel="stylesheet" href="style.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Ajout de la vérification des erreurs console -->
+    <script>
+        window.onerror = function (msg, url, lineNo, columnNo, error) {
+            console.error('Error: ' + msg + '\nURL: ' + url + '\nLine: ' + lineNo + '\nColumn: ' + columnNo + '\nError object: ' + JSON.stringify(error));
+            return false;
+        };
+    </script>
+    <!-- Ajout des meta tags de performance -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+</head>
+
+<body>
+    <!-- Navigation principale -->
+    <nav>
+        <div class="logo">
+            <img src="images/logo.svg" alt="Hypersens Logo">
+        </div>
+        <div class="menu">
+            <a href="#home">Accueil</a>
+            <a href="#services">Services</a>
+            <a href="#team">Notre Équipe</a>
+            <a href="engagements.html">Pourquoi ?</a>
+            <a href="pourqui.html">Pour Qui ?</a>
+            <a href="#contact">Contact</a>
+            <a href="login.html" class="login-btn">Se connecter</a>
+            <button class="theme-switch">🌙</button>
+        </div>
+        <button class="mobile-menu-toggle" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- Section Hero avec parallaxe -->
+    <header id="home">
+        <div class="hero"
+            style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1454923634634-bd1614719a7b?w=1920&h=1080&fit=crop');">
+            <!-- Image représentant un groupe diversifié de personnes collaborant dans un environnement créatif -->
+            <h1 data-aos="fade-up">Valorisons la Neurodiversité</h1>
+            <p data-aos="fade-up" data-aos-delay="200">Accompagnement des entreprises vers une inclusion réussie des
+                profils neuroatypiques</p>
+            <button data-aos="fade-up" data-aos-delay="400" class="cta-btn">Découvrir nos Solutions</button>
+        </div>
+    </header>
+
+    <section class="values" data-aos="fade-up">
+        <h2>Nos Valeurs</h2>
+        <div class="values-content">
+            <p class="values-text">Développez et renforcez durablement la cohésion, l'engagement et la performance du Collectif par la neuro-diversité.</p>
+        </div>
+    </section>
+
+    <section class="objectives" data-aos="fade-up">
+        <h2>Nos Objectifs</h2>
+        <div class="objectives-content">
+            <p class="main-objective">HYPERSENS est un cabinet atypique spécialisé dans la sensibilisation
+            et l'accompagnement des entreprises à la richesse cognitive
+            et à l'intelligence collective.</p>
+            
+            <p class="vision">Notre vision est de placer la neuro-diversité au cœur de la stratégie des entreprises performantes et innovantes et ainsi de valoriser la singularité cognitive au sein du collectif.</p>
+            
+            <p class="approach">Sensibiliser pour mieux appréhender, Comprendre et se connaitre pour agir et réagir en conséquence.</p>
+        </div>
+    </section>
+
+    <section id="services">
+        <h2 data-aos="fade-up">Nos Services</h2>
+        <div class="services-grid">
+            <div class="service-card" data-aos="fade-up">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978" alt="Audit & Conseil"
+                    loading="lazy">
+                <h3>Audit & Conseil</h3>
+                <p>Évaluation de votre organisation et recommandations pour l'inclusion des profils neuroatypiques.</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984" alt="Formation" loading="lazy">
+                <h3>Formation & Sensibilisation</h3>
+                <p>Programmes sur mesure pour comprendre et accueillir la neurodiversité en entreprise.</p>
+            </div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0" alt="Accompagnement"
+                    loading="lazy">
+                <h3>Accompagnement</h3>
+                <p>Support personnalisé pour l'intégration et le développement des talents neuroatypiques.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="team" class="team-section">
+        <h2 data-aos="fade-up">Notre Équipe d'Experts</h2>
+        <div class="team-grid">
+            <div class="team-card" data-aos="fade-up">
+                <div class="team-image-wrapper">
+                    <img src="./images/audrey carrafa.avif" alt="Audrey Carrafa" class="team-image" loading="lazy">
+                    <!-- Remplacer par le chemin de la photo d'Audrey -->
+                </div>
+                <div class="team-info">
+                    <h3 class="team-name">Audrey Carrafa</h3>
+                    <p class="team-role">Experte en Neurodiversité</p>
+                    <p class="team-bio">Entrepreneuse expérimentée et passionnée, spécialisée dans l'accompagnement des
+                        profils neuroatypiques et le développement.
+                    </p>
+                    <a href="https://be.linkedin.com/in/audreycarrafa/en?trk=people-guest_people_search-card"
+                        target="_blank" class="linkedin-button">
+                        <i class="fab fa-linkedin"></i>
+                        Voir le profil
+                    </a>
+                </div>
+            </div>
+
+            <div class="team-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="team-image-wrapper">
+                    <img src="./images/moira.avif" alt="Moira Wrathall"
+                        class="team-image" loading="lazy">
+                </div>
+                <div class="team-info">
+                    <h3 class="team-name">Moira Wrathall</h3>
+                    <p class="team-role">Consultante & Coach</p>
+                    <p class="team-bio">Coach certifiée depuis 2016, formatrice et consultante en stratégie marketing. Elle s'est spécialisée en executive coaching, en intelligence collective et en gestion du stress ; et ses domaines de prédilections sont la communication interpersonnelle, l'hypersensibilité et l'intelligence collective.</p>
+                    <a href="https://www.linkedin.com/in/moira-wrathall/?originalSubdomain=be" class="linkedin-button">
+                        <i class="fab fa-linkedin"></i>
+                        Voir le profil
+                    </a>
+                </div>
+            </div>
+
+            <div class="team-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="team-image-wrapper">
+                    <img src="./images/stéphanie Herbots.avif" alt="Stéphanie Herbots"
+                        class="team-image" loading="lazy">
+                </div>
+                <div class="team-info">
+                    <h3 class="team-name">Stéphanie Herbots</h3>
+                    <p class="team-role">Coach et Trainer Coach certifiée</p>
+                    <p class="team-bio">Coach certifiée, spécialiste Ikigaï avec plus de 500h de pratique en coaching individuel & formation. Plus de 15 ans d'expérience en entreprises, principalement dans la Finance en tant que Business Controller. Passionnée, curieuse, bienveillante, intuitive et à l'écoute ; elle crée la bulle de sécurité permettant à chacun d'évoluer sans jugement.</p>
+                    <a href="https://www.linkedin.com/search/results/all/?fetchDeterministicClustersOnly=true&heroEntityKey=urn%3Ali%3Afsd_profile%3AACoAAACVWmcBRlxss04E8xvrpnhUlo6uO_iFjLQ&keywords=stéphanie%20herbots&origin=RICH_QUERY_SUGGESTION&position=0&searchId=01c4db40-e194-4831-8379-559d248e79bf&sid=WDM&spellCorrectionEnabled=false" class="linkedin-button">
+                        <i class="fab fa-linkedin"></i>
+                        Voir le profil
+                    </a>
+                </div>
+            </div>
+
+            <!-- Nouvelle carte pour Déborah Linz -->
+            <div class="team-card" data-aos="fade-up" data-aos-delay="600">
+                <div class="team-image-wrapper">
+                    <img src="./images/déborah linz.avif" alt="Déborah Linz"
+                        class="team-image" loading="lazy">
+                </div>
+                <div class="team-info">
+                    <h3 class="team-name">Déborah Linz</h3>
+                    <p class="team-role">Consultante & Coach</p>
+                    <p class="team-bio">Depuis plus de 16 ans, formatrice professionnelle en entreprise, spécialisée dans les domaines de la communication interpersonnelle, du People et du Change Management. Coach, Consultante et Ennéathérapeute. Titulaire d'un diplôme en Communication et Relations Publiques, ancienne présentatrice TV (MCM) et animatrice radio avant de se consacrer pleinement à la formation.</p>
+                    <a href="https://www.linkedin.com/in/déborahlinz/?originalSubdomain=be" class="linkedin-button">
+                        <i class="fab fa-linkedin"></i>
+                        Voir le profil
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <h2 data-aos="fade-up">Témoignages</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-card" data-aos="fade-up">
+                <img src="https://i.pravatar.cc/150?img=1" alt="Sophie Martin" loading="lazy">
+                <h3>Sophie Martin</h3>
+                <p class="role">Directrice Marketing</p>
+                <p>"Grâce au coaching exécutif, j'ai pu développer mon leadership et obtenir la promotion tant
+                    attendue."</p>
+                <div class="rating">★★★★★</div>
+            </div>
+            <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                <img src="https://i.pravatar.cc/150?img=2" alt="Thomas Bernard" loading="lazy">
+                <h3>Thomas Bernard</h3>
+                <p class="role">Entrepreneur</p>
+                <p>"Le programme de coaching m'a permis de structurer ma vision et de doubler mon chiffre d'affaires en
+                    6 mois."</p>
+                <div class="rating">★★★★★</div>
+            </div>
+            <div class="testimonial-card" data-aos="fade-up" data-aos-delay="400">
+                <img src="https://i.pravatar.cc/150?img=3" alt="Julie Dubois" loading="lazy">
+                <h3>Julie Dubois</h3>
+                <p class="role">Coach Sportif</p>
+                <p>"Une expérience transformatrice qui m'a aidée à mieux équilibrer vie professionnelle et personnelle."
+                </p>
+                <div class="rating">★★★★★</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing">
+        <h2 data-aos="fade-up">Nos Programmes</h2>
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <div class="pricing-header">
+                    <h3>HYPER Sensibilisation</h3>
+                    <p>Sensibiliser en inter-entreprises ou intra-entreprise</p>
+                </div>
+                <ul>
+                    <li>✓ S'ouvrir</li>
+                    <li>✓ Se former</li>
+                    <li>✓ Connaître et reconnaître</li>
+                </ul>
+                <a href="#contact" class="contact-btn">
+                    <i class="fas fa-envelope"></i>
+                    Nous contacter
+                </a>
+            </div>
+
+            <div class="pricing-card featured" data-aos="fade-up" data-aos-delay="200">
+                <div class="pricing-header">
+                    <span class="badge">Popular</span>
+                    <h3>HYPER Transformation</h3>
+                    <p>Un programme d'accompagnement en 5 étapes au plus proche du besoin de votre entreprise</p>
+                </div>
+                <ul>
+                    <li>✓ Comprendre</li>
+                    <li>✓ Intégrer</li>
+                    <li>✓ Agir et Réagir</li>
+                </ul>
+                <a href="#contact" class="contact-btn">
+                    <i class="fas fa-envelope"></i>
+                    Nous contacter
+                </a>
+            </div>
+
+            <div class="pricing-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="pricing-header">
+                    <h3>HYPER Leadership</h3>
+                    <p>Intégrer la neuro-diversité au centre de votre culture managériale</p>
+                </div>
+                <ul>
+                    <li>✓ Intégrer</li>
+                    <li>✓ Écouter</li>
+                    <li>✓ Adapter</li>
+                    <li>✓ Développer</li>
+                    <li>✓ Valoriser</li>
+                </ul>
+                <a href="#contact" class="contact-btn">
+                    <i class="fas fa-envelope"></i>
+                    Nous contacter
+                </a>
+            </div>
+
+            <!-- Nouvelle carte HYPER Facilitation -->
+            <div class="pricing-card" data-aos="fade-up" data-aos-delay="600">
+                <div class="pricing-header">
+                    <h3>HYPER Facilitation</h3>
+                    <p>Instaurer et animer des espaces de paroles et d'échanges permettant de libérer la parole et les à priori</p>
+                </div>
+                <ul>
+                    <li>✓ Libérer</li>
+                    <li>✓ Rapprocher</li>
+                    <li>✓ Fluidifier</li>
+                    <li>✓ Fédérer</li>
+                </ul>
+                <a href="#contact" class="contact-btn">
+                    <i class="fas fa-envelope"></i>
+                    Nous contacter
+                </a>
+            </div>
+
+            <!-- Nouvelle carte HYPER Accélération -->
+            <div class="pricing-card" data-aos="fade-up" data-aos-delay="800">
+                <div class="pricing-header">
+                    <h3>HYPER Accélération</h3>
+                    <p>Intégrer la neuro diversité grâce à nos propositions ponctuelles ou individuelles</p>
+                </div>
+                <ul>
+                    <li>✓ Accélérer</li>
+                    <li>✓ Renforcer</li>
+                    <li>✓ Etendre</li>
+                </ul>
+                <a href="#contact" class="contact-btn">
+                    <i class="fas fa-envelope"></i>
+                    Nous contacter
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq">
+        <h2 data-aos="fade-up">Questions Fréquentes</h2>
+        <div class="faq-grid">
+            <div class="faq-item">
+                <h3>Comment se déroule une séance d'accompagnement ?</h3>
+                <div class="faq-answer">
+                    <p>Les séances durent 1 heure et peuvent se faire en présentiel ou en visioconférence. Chaque séance
+                        suit un protocole structuré : bilan des actions, exploration des objectifs, définition des
+                        prochaines étapes.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h3>Comment se déroule la première consultation ?</h3>
+                <div class="faq-answer">
+                    <p>La première consultation est gratuite et dure environ 45 minutes. Nous analysons ensemble vos
+                        besoins, vos objectifs et définissons la meilleure approche pour votre entreprise. C'est
+                        l'occasion de valider l'adéquation entre vos attentes et nos solutions.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h3>Quelle est la durée moyenne d'un accompagnement ?</h3>
+                <div class="faq-answer">
+                    <p>La durée varie selon vos objectifs et l'ampleur du projet. Typiquement, nos accompagnements
+                        s'étendent sur 3 à 12 mois, avec des points d'étape réguliers pour mesurer les progrès et
+                        ajuster la stratégie si nécessaire.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h3>Pour quel type d'entreprise travaillez-vous ?</h3>
+                <div class="faq-answer">
+                    <p>Nous accompagnons des PME, startups et entreprises en croissance, principalement dans les
+                        secteurs du digital, du service et de l'industrie. Nos solutions s'adaptent aux entreprises
+                        réalisant entre 500K€ et 50M€ de chiffre d'affaires.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h3>Quels sont vos domaines d'expertise ?</h3>
+                <div class="faq-answer">
+                    <p>Nos domaines d'expertise comprennent :<br>
+                        - La stratégie de croissance<br>
+                        - L'optimisation des processus<br>
+                        - La transformation digitale<br>
+                        - Le développement commercial<br>
+                        - La gestion du changement<br>
+                        - L'amélioration de la performance</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h3>Comment mesurez-vous les résultats ?</h3>
+                <div class="faq-answer">
+                    <p>Nous définissons ensemble des KPIs précis en début d'accompagnement. Un tableau de bord
+                        personnalisé permet de suivre les progrès mensuel. Nous garantissons la transparence avec des
+                        rapports détaillés et des réunions de suivi régulières.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h3>Proposez-vous des formations pour les équipes ?</h3>
+                <div class="faq-answer">
+                    <p>Oui, nous proposons des modules de formation sur mesure pour vos équipes, en complément de
+                        l'accompagnement stratégique. Ces formations peuvent être dispensées en présentiel ou en
+                        distanciel, selon vos préférences.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h3>Quelle est votre méthodologie de travail ?</h3>
+                <div class="faq-answer">
+                    <p>Notre approche se décompose en 4 phases :<br>
+                        1. Diagnostic approfondi<br>
+                        2. Élaboration de la stratégie<br>
+                        3. Mise en œuvre et accompagnement<br>
+                        4. Mesure et optimisation continue</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <h3>Que comprennent vos honoraires ?</h3>
+                <div class="faq-answer"></div>
+                    <p>Nos honoraires incluent l'ensemble de l'accompagnement : consultations, élaboration des
+                        stratégies, suivi des projets, rapports d'avancement, et support continu. Nous proposons des
+                        forfaits adaptés à différents budgets et besoins.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 data-aos="fade-up">Contactez-nous</h2>
+        <form id="contact-form" action="https://formsubmit.co/ajax/morgan19.reichert@gmail.com" method="POST"
+            data-aos="fade-up" data-aos-delay="200">
+            <!-- Champs cachés pour la configuration -->
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
+
+            <input type="text" name="name" placeholder="Votre nom" required>
+            <input type="email" name="email" placeholder="Votre email" required>
+            <textarea name="message" placeholder="Comment pouvons-nous vous aider ?" required></textarea>
+            <button type="submit">Envoyer votre message</button>
+        </form>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Hypersens</h4>
+                <div class="address">
+                    <p><i class="fas fa-map-marker-alt"></i> Bd. de la Cambre, 46</p>
+                    <p style="margin-left: 1.5rem;">1050 Bruxelles</p>
+                    <p style="margin-left: 1.5rem;">BELGIQUE</p>
+                </div>
+                <div class="social-links">
+                    <a href="https://linkedin.com/company/votre-entreprise" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://twitter.com/votre-entreprise" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://instagram.com/votre-entreprise" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://facebook.com/votre-entreprise" target="_blank"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p><i class="fas fa-phone"></i> + 32 (0)478 78 77 91</p>
+                <p><i class="fas fa-phone"></i> +33 (0)6 70 11 06 89</p>
+                <p><i class="fas fa-envelope"></i> INFO@HYPERSENS.CO</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Hypersens - Tous droits réservés</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
