@@ -3,26 +3,26 @@
 \*------------------------------------*/
 :root {
     /* Couleurs principales */
-    --primary: #2563eb;
-    /* Bleu principal utilisé pour les éléments importants */
-    --secondary: #3b82f6;
-    /* Bleu secondaire pour les éléments de support */
-    --accent: #60a5fa;
-    /* Bleu clair pour les accents et surbrillances */
+    --primary: #6a0dad;
+    /* Mauve principal utilisé pour les éléments importants */
+    --secondary: #9b30ff;
+    /* Mauve secondaire pour les éléments de support */
+    --accent: #d8bfd8;
+    /* Mauve clair pour les accents et surbrillances */
 
     /* Couleurs de fond et text */
-    --light: #f0f9ff;
-    /* Fond clair avec teinte bleue subtile */
-    --dark: #1e40af;
-    /* Bleu foncé pour contraste fort */
+    --light: #f0f0f0;
+    /* Fond clair */
+    --dark: #4b0082;
+    /* Mauve foncé pour contraste fort */
     --text: #1e293b;
     /* Couleur de texte principale */
     --bg: #ffffff;
     /* Fond blanc par défaut */
 
     /* Effets et décorations */
-    --gradient: linear-gradient(135deg, #2563eb 0%, #60a5fa 100%);
-    --card-shadow: 0 10px 20px rgba(37, 99, 235, 0.1);
+    --gradient: linear-gradient(135deg, #6a0dad 0%, #9b30ff 100%);
+    --card-shadow: 0 10px 20px rgba(106, 13, 173, 0.1);
 
     /* Couleurs d'accent orange */
     --orange: rgb(230, 124, 48);
@@ -32,9 +32,9 @@
 
 /* Modification du thème sombre */
 [data-theme="dark"] {
-    --primary: #60a5fa;
-    --secondary: #93c5fd;
-    --accent: #bfdbfe;
+    --primary: #9b30ff;
+    --secondary: #d8bfd8;
+    --accent: #e6e6fa;
     --light: #1e293b;
     --dark: #f8fafc;
     --text: #f8fafc;
@@ -99,14 +99,26 @@ nav .logo img:hover {
     transform: scale(1.05);
 }
 
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    /* Augmenté pour plus d'espace entre les liens */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 .menu a {
-    margin: 0 1.5rem;
+    margin: 0;
     text-decoration: none;
     color: var(--primary);
     font-weight: 500;
     position: relative;
     padding: 0.5rem 0;
     overflow: visible;
+    font-size: 1.2rem;
+    /* Augmenté pour des liens plus gros */
 }
 
 .menu a::after {
@@ -150,7 +162,8 @@ nav .logo img:hover {
     color: white;
 }
 
-/* Ajout du style pour le bouton de connexion */
+/* Supprimez ou commentez les styles du login-btn */
+/*
 .login-btn {
     background: var(--primary);
     color: white !important;
@@ -161,13 +174,14 @@ nav .logo img:hover {
 }
 
 .login-btn:hover {
-    background: var(--orange);
+    background: var(--secondary);
     transform: translateY(-2px);
 }
 
 .login-btn::after {
     display: none;
 }
+*/
 
 /* Hero section avec design moderne */
 .hero {
@@ -265,7 +279,7 @@ nav .logo img:hover {
 
 .service-card:hover {
     transform: translateY(-15px) scale(1.02);
-    border-bottom: 3px solid var(--orange);
+    border-bottom: 3px solid var(--secondary);
 }
 
 .service-card img {
@@ -305,7 +319,7 @@ section h2 {
 
 /* Contact Form - New Design */
 #contact {
-    background: white;
+    background: #f7f7f7;
     padding: 8rem 2rem;
     position: relative;
     overflow: hidden;
@@ -702,6 +716,8 @@ footer p {
     display: none;
 }
 
+/* Retirer les styles pour la section FAQ */
+/*
 .faq {
     padding: 5rem 2rem;
     background: var(--light);
@@ -728,6 +744,7 @@ footer p {
 .faq-item.active .faq-answer {
     display: block;
 }
+*/
 
 /* Animations et transitions */
 .service-card,
@@ -779,12 +796,27 @@ footer p {
     opacity: 0;
     transition: all 0.3s ease;
     z-index: 9999;
-    pointer-events: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 .notification.show {
     transform: translateY(0);
     opacity: 1;
+}
+
+.notification.success {
+    background: var(--primary);
+}
+
+.notification.error {
+    background: #ef4444;
+}
+
+.notification.info {
+    background: #3b82f6;
 }
 
 /* Styles améliorés pour les notifications */
@@ -894,7 +926,7 @@ footer p {
 
 .team-card:hover {
     transform: translateY(-15px);
-    border-bottom: 3px solid var(--orange);
+    border-bottom: 3px solid var(--secondary);
     /* Ajoute la bordure orange au survol */
 }
 
@@ -1295,12 +1327,18 @@ a:focus {
         transition: left 0.3s ease;
         flex-direction: column;
         align-items: center;
-        gap: 2rem;
+        gap: 1.5rem;
+        /* Légèrement réduit sur mobile */
         z-index: 1000;
     }
 
     .menu.active {
         left: 0;
+    }
+
+    .menu a {
+        font-size: 1.1rem;
+        /* Légèrement plus petit sur mobile */
     }
 
     .team-grid {
@@ -1346,7 +1384,7 @@ textarea,
 select,
 .service-card,
 .team-card,
-.faq-item,
+
 .pricing-card,
 .social-links a,
 .mobile-menu-toggle {
