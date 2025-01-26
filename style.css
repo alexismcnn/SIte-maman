@@ -46,6 +46,15 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+html,
+body {
+    overflow-x: hidden;
+    position: relative;
+    width: 100%;
 }
 
 body {
@@ -122,6 +131,8 @@ nav .logo img:hover {
 
 /* Theme Switch repositionné */
 .theme-switch {
+    -webkit-appearance: none;
+    appearance: none;
     position: relative;
     margin-left: 2rem;
     background: transparent;
@@ -163,7 +174,7 @@ nav .logo img:hover {
     min-height: 100vh;
     background: linear-gradient(135deg, var(--primary) 0%, var(--orange) 100%);
     clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-    padding: 8rem 2rem 12rem;
+    padding: 120px 2rem;
     background-attachment: fixed;
     position: relative;
     display: flex;
@@ -171,7 +182,6 @@ nav .logo img:hover {
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 120px 2rem;
     overflow: hidden;
     backface-visibility: hidden;
     transform: translateZ(0);
@@ -469,7 +479,7 @@ footer p {
     transition: transform 0.3s ease, color 0.3s ease;
 }
 
-social-links a:hover {
+.social-links a:hover {
     transform: translateY(-3px);
 }
 
@@ -574,14 +584,15 @@ social-links a:hover {
 
 .pricing {
     padding: 5rem 2rem;
-    background: var (--bg);
+    background: var(--bg);
 }
 
 .pricing-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 3rem;
-    max-width: 1400px; /* Augmenté pour mieux accommoder les nouvelles cartes */
+    max-width: 1400px;
+    /* Augmenté pour mieux accommoder les nouvelles cartes */
     margin: 0 auto;
     position: relative;
     padding: 4rem 2rem;
@@ -612,7 +623,7 @@ social-links a:hover {
         gap: 2rem;
         padding: 2rem 1rem;
     }
-    
+
     .pricing-card.featured {
         transform: scale(1.05);
         /* Réduction de l'échelle sur mobile */
@@ -761,13 +772,14 @@ social-links a:hover {
     position: fixed;
     bottom: 2rem;
     right: 2rem;
-    background: var(--primary);
-    color: white;
     padding: 1rem 2rem;
     border-radius: 8px;
+    color: white;
     transform: translateY(100px);
     opacity: 0;
     transition: all 0.3s ease;
+    z-index: 9999;
+    pointer-events: none;
 }
 
 .notification.show {
@@ -1272,22 +1284,23 @@ a:focus {
     }
 
     .menu {
+        display: flex;
         position: fixed;
         top: 70px;
-        left: 0;
+        left: -100%;
         width: 100%;
+        height: calc(100vh - 70px);
         background: var(--bg);
-        padding: 1rem;
-        transform: translateY(-100%);
-        transition: transform 0.3s ease;
-        display: flex;
+        padding: 2rem;
+        transition: left 0.3s ease;
         flex-direction: column;
         align-items: center;
-        gap: 1rem;
+        gap: 2rem;
+        z-index: 1000;
     }
 
     .menu.active {
-        transform: translateY(0);
+        left: 0;
     }
 
     .team-grid {
@@ -1312,10 +1325,11 @@ a:focus {
     border: 2px solid var(--orange);
     border-radius: 50%;
     position: fixed;
-    pointer-events: none;
-    z-index: 9999;
+    pointer-events: none !important;
+    z-index: 99999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease, width 0.2s ease, height 0.2s ease, background-color 0.2s ease;
     mix-blend-mode: difference;
-    transition: transform 0.2s ease;
 }
 
 /* État actif du curseur au survol des éléments interactifs */
@@ -1337,20 +1351,6 @@ select,
 .social-links a,
 .mobile-menu-toggle {
     cursor: none !important;
-}
-
-/* Ajout du style pour le curseur personnalisé */
-.custom-cursor {
-    width: 20px;
-    height: 20px;
-    border: 2px solid var(--orange);
-    border-radius: 50%;
-    position: fixed;
-    pointer-events: none !important;
-    z-index: 99999;
-    transform: translate(-50%, -50%);
-    transition: transform 0.1s ease, width 0.2s ease, height 0.2s ease, background-color 0.2s ease;
-    mix-blend-mode: difference;
 }
 
 /* Mission Statement */
@@ -1387,11 +1387,11 @@ select,
     .mission-statement {
         padding: 0 1.5rem;
     }
-    
+
     .mission-statement p {
         font-size: 1rem;
     }
-    
+
     .mission-text {
         font-size: 1.1rem !important;
     }
@@ -1444,11 +1444,11 @@ select,
     .objectives {
         padding: 1rem;
     }
-    
+
     .objectives h2 {
         font-size: 1.5rem;
     }
-    
+
     .main-objective {
         font-size: 1.1rem;
     }
@@ -1461,8 +1461,10 @@ select,
     text-align: center;
     position: relative;
     z-index: 10;
-    margin-top: -2rem; /* Réduit le chevauchement */
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 95%); /* Effet diagonal bas */
+    margin-top: -2rem;
+    /* Réduit le chevauchement */
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 95%);
+    /* Effet diagonal bas */
 }
 
 .objectives h2 {
@@ -1513,16 +1515,17 @@ select,
         padding: 4rem 1.5rem;
         margin-top: -2rem;
     }
-    
+
     .objectives h2 {
         font-size: 2rem;
     }
-    
+
     .main-objective {
         font-size: 1.1rem;
     }
-    
-    .vision, .approach {
+
+    .vision,
+    .approach {
         font-size: 1rem;
     }
 }
@@ -1597,18 +1600,21 @@ select,
 
 /* Values Section */
 .values {
-    padding: 6rem 2rem 8rem; /* Augmentation du padding bottom */
+    padding: 6rem 2rem 8rem;
+    /* Augmentation du padding bottom */
     background: var(--bg);
     text-align: center;
     position: relative;
     z-index: 10;
     margin-top: -6rem;
-    margin-bottom: 2rem; /* Ajout d'une marge en bas */
+    margin-bottom: 2rem;
+    /* Ajout d'une marge en bas */
 }
 
 .values-content {
     max-width: 800px;
-    margin: 0 auto 4rem; /* Augmentation de la marge bottom */
+    margin: 0 auto 4rem;
+    /* Augmentation de la marge bottom */
     position: relative;
     z-index: 2;
 }
@@ -1619,8 +1625,10 @@ select,
     color: var(--primary);
     font-weight: 500;
     position: relative;
-    padding: 2rem 3rem; /* Augmentation du padding */
-    margin-bottom: 2rem; /* Ajout d'une marge en bas */
+    padding: 2rem 3rem;
+    /* Augmentation du padding */
+    margin-bottom: 2rem;
+    /* Ajout d'une marge en bas */
 }
 
 .values-text::before,
@@ -1647,11 +1655,11 @@ select,
         padding: 4rem 1.5rem 2rem;
         margin-top: -4rem;
     }
-    
+
     .values h2 {
         font-size: 2rem;
     }
-    
+
     .values-text {
         font-size: 1.2rem;
         padding: 0 1rem;
@@ -1853,6 +1861,7 @@ select,
 
 /* Optimisations tactiles */
 @media (hover: none) {
+
     .service-card:hover,
     .team-card:hover,
     .pricing-card:hover {
@@ -1874,5 +1883,171 @@ select,
     textarea,
     select {
         cursor: auto !important;
+    }
+}
+
+/* Styles Pour Qui page */
+.page-content {
+    padding-top: 120px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 4rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.target-section h1 {
+    color: var(--primary);
+    font-size: 3rem;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.target-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.target-card {
+    background: var(--bg);
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    box-shadow: var(--card-shadow);
+}
+
+.target-card:hover {
+    transform: translateY(-10px);
+}
+
+.target-card i {
+    font-size: 2.5rem;
+    color: var(--orange);
+    margin-bottom: 1.5rem;
+}
+
+.target-card h3 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.target-message {
+    text-align: center;
+    margin-top: 3rem;
+    padding: 2rem;
+    background: var(--light);
+    border-radius: 15px;
+}
+
+.target-message p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: var(--text);
+}
+
+/* Optimisations mobiles */
+@media (max-width: 768px) {
+
+    /* Navigation mobile */
+    .mobile-menu-toggle {
+        display: block;
+        z-index: 1001;
+        position: fixed;
+        right: 1rem;
+        top: 1rem;
+    }
+
+    .menu {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100vh;
+        background: var(--bg);
+        padding: 5rem 2rem 2rem;
+        transition: left 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        z-index: 1000;
+    }
+
+    .menu.active {
+        left: 0;
+    }
+
+    /* Fix pour le scrolling iOS */
+    body.menu-open {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+    }
+
+    /* Ajustements pour iPhone */
+    .hero {
+        padding-top: calc(60px + env(safe-area-inset-top));
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+        padding: 0 1rem;
+    }
+
+    /* Ajustements des grilles */
+    .target-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    /* Fix pour le tap highlight sur iOS */
+    * {
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Ajustements des boutons pour une meilleure zone de tap */
+    button,
+    .cta-btn,
+    .contact-btn,
+    .menu a {
+        min-height: 44px;
+        padding: 12px 20px;
+    }
+
+    /* Fix pour le viewport sur iOS */
+    @supports (-webkit-touch-callout: none) {
+        .menu {
+            min-height: -webkit-fill-available;
+        }
+    }
+}
+
+/* Ajustements spécifiques pour les petits écrans d'iPhone */
+@media (max-width: 375px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .target-section h1 {
+        font-size: 2.2rem;
+    }
+
+    .target-card {
+        padding: 1.5rem;
+    }
+
+    .target-message p {
+        font-size: 1.1rem;
+    }
+}
+
+/* Correction des problèmes iOS */
+@supports (-webkit-touch-callout: none) {
+    .hero {
+        background-attachment: scroll;
     }
 }
