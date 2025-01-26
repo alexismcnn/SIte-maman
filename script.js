@@ -59,6 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // Log des éléments manquants
         Object.entries(criticalElements).forEach(([key, element]) => {
             if (!element || (element instanceof NodeList && element.length === 0)) {
+                p
                 console.error(`Critical element missing: ${key}`);
             }
         });
@@ -212,7 +213,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             document.documentElement.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
-            themeSwitch.textContent = newTheme === 'dark' ? '☀️ Mode Clair' : '🌙 Mode Sombre';
+            themeSwitch.textContent = newTheme === 'dark' ? '🌙 Mode Sombre' : '☀️ Mode Clair';
         });
 
         // FAQ Accordion
@@ -276,7 +277,7 @@ document.addEventListener('DOMContentLoaded', function () {
         function showNotification(message, type = 'success') {
             const notification = document.createElement('div');
             notification.className = `notification ${type}`;
-            notification.textContent = message;
+            notification.innerHTML = `<i class="fas fa-info-circle"></i> ${message}`;
 
             // Supprimer les anciennes notifications
             document.querySelectorAll('.notification').forEach(notif => notif.remove());
@@ -541,3 +542,193 @@ document.body.addEventListener('touchmove', (e) => {
     }
 }, { passive: false });
 
+
+// Fonction pour l'inscription
+document.getElementById('register-form')?.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirm-password').value;
+
+    if (password !== confirmPassword) {
+        alert('Les mots de passe ne correspondent pas!');
+        return;
+    }
+
+    // Vérifier si l'utilisateur existe déjà
+    const users = JSON.parse(localStorage.getItem('users') || '[]');
+    if (users.find(user => user.email === email)) {
+        alert('Un compte existe déjà avec cet email!');
+        return;
+    }
+
+    // Ajouter le nouvel utilisateur
+    users.push({ name, email, password });
+    localStorage.setItem('users', JSON.stringify(users));
+
+    alert('Inscription réussie!');
+    window.location.href = 'login.html';
+});
+
+// Fonction pour la connexion
+document.getElementById('login-form')?.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    const users = JSON.parse(localStorage.getItem('users') || '[]');
+    const user = users.find(u => u.email === email && u.password === password);
+
+    if (user) {
+        // Stocker l'utilisateur connecté
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        alert('Connexion réussie!');
+        window.location.href = 'index.html';
+    } else {
+        alert('Email ou mot de passe incorrect!');
+    }
+});
+
+// Vérifier si l'utilisateur est connecté
+function checkAuth() {
+    const currentUser = localStorage.getItem('currentUser');
+    if (!currentUser && window.location.pathname !== '/login.html' && window.location.pathname !== '/register.html') {
+        window.location.href = 'login.html';
+    }
+}
+
+// Fonction de déconnexion
+function logout() {
+    localStorage.removeItem('currentUser');
+    window.location.href = 'login.html';
+}
+
+// Fonction pour afficher les messages
+function showMessage(message, type = 'success') {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `message ${type}`;
+    messageDiv.textContent = message;
+    messageDiv.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 15px 25px;
+        border-radius: 5px;
+        background: ${type === 'success' ? '#4CAF50' : '#f44336'};
+        color: white;
+        z-index: 1000;
+    `;
+    document.body.appendChild(messageDiv);
+    setTimeout(() => messageDiv.remove(), 3000);
+}
+
+// Fonction pour vérifier si l'utilisateur est connecté
+function checkLoginStatus() {
+    const currentUser = localStorage.getItem('currentUser');
+    const loginBtn = document.querySelector('.login-btn');
+    const userMenu = document.createElement('div');
+
+    if (currentUser && loginBtn) {
+        const user = JSON.parse(currentUser);
+        loginBtn.parentElement.replaceChild(userMenu, loginBtn);
+        userMenu.innerHTML = `
+            <span style="margin-right: 10px">Bienvenue, ${user.name}</span>
+            <button onclick="logout()" class="cta-btn">Déconnexion</button>
+        `;
+    }
+}
+
+// Fonction de déconnexion
+function logout() {
+    localStorage.removeItem('currentUser');
+    showMessage('Déconnexion réussie');
+    setTimeout(() => {
+        window.location.href = 'index.html';
+    }, 1500);
+}
+
+// Gestionnaire d'inscription
+document.getElementById('register-form')?.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirm-password').value;
+
+    if (password !== confirmPassword) {
+        showMessage('Les mots de passe ne correspondent pas!', 'error');
+        return;
+    }
+
+    const users = JSON.parse(localStorage.getItem('users') || '[]');
+    if (users.find(user => user.email === email)) {
+        showMessage('Un compte existe déjà avec cet email!', 'error');
+        return;
+    }
+
+    users.push({ name, email, password });
+    localStorage.setItem('users', JSON.stringify(users));
+    localStorage.setItem('currentUser', JSON.stringify({ name, email }));
+
+    showMessage('Inscription réussie! Redirection...');
+    setTimeout(() => {
+        window.location.href = 'index.html';
+    }, 1500);
+});
+
+// Gestionnaire de connexion
+document.getElementById('login-form')?.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    const users = JSON.parse(localStorage.getItem('users') || '[]');
+    const user = users.find(u => u.email === email && u.password === password);
+
+    if (user) {
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        showMessage('Connexion réussie! Redirection...');
+        setTimeout(() => {
+            window.location.href = 'index.html';
+        }, 1500);
+    } else {
+        showMessage('Email ou mot de passe incorrect!', 'error');
+    }
+});
+
+// Vérifier le statut de connexion au chargement de la page
+document.addEventListener('DOMContentLoaded', function () {
+    checkLoginStatus();
+});
+
+// Gestionnaire d'inscription
+document.getElementById('register-form')?.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirm-password').value;
+
+    if (password !== confirmPassword) {
+        showNotification('Les mots de passe ne correspondent pas!', 'error');
+        return;
+    }
+
+    const users = JSON.parse(localStorage.getItem('users') || '[]');
+    if (users.find(user => user.email === email)) {
+        showNotification('Un compte existe déjà avec cet email!', 'error');
+        return;
+    }
+
+    users.push({ name, email, password });
+    localStorage.setItem('users', JSON.stringify(users));
+    localStorage.setItem('currentUser', JSON.stringify({ name, email }));
+
+    showNotification('Inscription réussie! Redirection...', 'success');
+    setTimeout(() => {
+        window.location.href = 'index.html';
+    }, 3000);
+});
