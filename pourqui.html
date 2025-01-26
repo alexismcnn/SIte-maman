@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
+
 <body>
     <nav>
         <div class="logo">
@@ -30,13 +32,41 @@
     <div class="page-content" style="padding-top: 120px; max-width: 1200px; margin: 0 auto; padding-bottom: 4rem;">
         <section class="target-section" data-aos="fade-up">
             <h1 style="color: var(--primary); font-size: 3rem; margin-bottom: 3rem; text-align: center;">Pour Qui ?</h1>
-            
-            <div class="target-content" style="background: var(--light); padding: 3rem; border-radius: 20px; box-shadow: var(--card-shadow);">
-                <!-- Message principal -->
-                <div class="main-message" style="background: var(--bg); padding: 2.5rem; border-radius: 12px; margin-bottom: 3rem; box-shadow: var(--card-shadow); color: var(--text);">
-                    <p style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 2rem; color: var(--text);">
-                        Compte tenu de l'importance d'une sensibilisation large et d'une connaissance partagée, notre approche s'adresse à l'ensemble des niveaux d'une organisation.
-                    </p>
+
+            <div class="target-content"
+                style="background: var(--light); padding: 3rem; border-radius: 20px; box-shadow: var(--card-shadow);">
+                <!-- Nouvelle structure avec cartes -->
+                <div class="target-grid">
+                    <div class="target-card">
+                        <i class="fas fa-users-cog"></i>
+                        <h3>Dirigeants & Managers</h3>
+                        <p>Pour développer une culture d'entreprise inclusive et innovante basée sur la neurodiversité.
+                        </p>
+                    </div>
+
+                    <div class="target-card">
+                        <i class="fas fa-user-tie"></i>
+                        <h3>RH & Recruteurs</h3>
+                        <p>Pour adapter vos processus de recrutement et d'intégration aux profils neuroatypiques.</p>
+                    </div>
+
+                    <div class="target-card">
+                        <i class="fas fa-users"></i>
+                        <h3>Équipes</h3>
+                        <p>Pour mieux comprendre et collaborer avec vos collègues neuroatypiques.</p>
+                    </div>
+
+                    <div class="target-card">
+                        <i class="fas fa-brain"></i>
+                        <h3>Profils Neuroatypiques</h3>
+                        <p>Pour valoriser vos talents uniques et développer votre potentiel professionnel.</p>
+                    </div>
+                </div>
+
+                <div class="target-message">
+                    <p>Notre approche s'adapte à tous les niveaux de l'organisation pour créer un environnement de
+                        travail inclusif et performant.</p>
+                    <a href="index.html#contact" class="cta-btn">Parlons de votre projet</a>
                 </div>
             </div>
         </section>
@@ -44,4 +74,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
